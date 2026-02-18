@@ -300,7 +300,7 @@ function renderProducts(products) {
                 </button>
             </div>
             <div class="product-info">
-                <h3>${product.name}</h3>
+                <h3><a href="product-details.html?id=${productId}" class="product-title-link">${product.name}</a></h3>
                 <div class="product-meta">
                     <span class="price">$${price}</span>
                     <div class="rating"><i class="fas fa-star"></i><span>${rating}</span></div>

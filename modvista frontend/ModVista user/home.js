@@ -146,7 +146,7 @@ async function fetchFeaturedProducts() {
                     <button class="add-cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
                 </div>
                 <div class="product-info">
-                    <h3>${product.name}</h3>
+                    <h3><a href="product-details.html?id=${product._id}" class="product-title-link">${product.name}</a></h3>
                     <div class="product-meta">
                         <span class="price">$${product.price ? product.price.toLocaleString() : '0.00'}</span>
                         <div class="rating">

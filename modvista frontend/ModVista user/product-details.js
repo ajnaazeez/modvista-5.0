@@ -16,7 +16,8 @@ function resolveImg(src) {
     if (!src) return "assets/default.png";
     if (src.startsWith("uploads/") || src.startsWith("/uploads/")) {
         const cleanPath = src.startsWith('/') ? src.slice(1) : src;
-        return `${API_BASE.replace('/api', '')}/${cleanPath}`;
+        // Fix: API_BASE was not defined in this scope, use localApiBase
+        return `${localApiBase.replace('/api', '')}/${cleanPath}`;
     }
     if (src.startsWith("http") || src.startsWith("data:") || src.startsWith("blob:")) {
         return src;
@@ -51,14 +52,19 @@ function renderStars(rating = 0) {
 
 document.addEventListener("DOMContentLoaded", async () => {
     const id = getProductIdFromURL();
+    console.log("Loading product details for ID:", id);
+
     if (!id) {
         // Option: redirect or show generic
         console.warn("No ID found in URL");
+        // alert("No product ID specified");
+        // window.location.href = "shop.html";
         return;
     }
 
     try {
         const product = await fetchProduct(id);
+        console.log("Product fetched:", product);
 
         setText(".product-title", product.name);
         setText(".product-price", `$${Number(product.price || 0).toFixed(2)}`);
@@ -177,8 +183,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     } catch (err) {
         console.error(err);
-        alert("Failed to load product details");
-        window.location.href = "shop.html";
+        alert(`Failed to load product details: ${err.message}`);
+        // window.location.href = "shop.html"; // Commented out to allow debugging
     }
 });
 
