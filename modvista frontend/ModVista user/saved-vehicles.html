@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ModVista | Saved Vehicles</title>
+    <meta name="description" content="Manage your vehicles for quick AI previews and modifications at ModVista.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="saved-vehicles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Mod<span>Vista</span></a>
+
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="shop.html" class="nav-link">Shop</a></li>
+                <li><a href="ai-preview.html" class="nav-link">AI Preview</a></li>
+                <li><a href="offers.html" class="nav-link">Offers</a></li>
+                <li><a href="coupons.html" class="nav-link">Coupons</a></li>
+                <li><a href="wishlist.html" class="nav-link">Wishlist</a></li>
+                <li><a href="cart.html" class="nav-link">Cart</a></li>
+                <li><a href="profile.html" class="nav-link active">Profile</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <a href="wishlist.html" class="wishlist-icon-wrapper">
+                    <i class="fas fa-heart"></i>
+                    <span class="wishlist-count-badge" style="display: none;">0</span>
+                </a>
+                <a href="cart.html" class="cart-icon-wrapper">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count-badge" style="display: none;">0</span>
+                </a>
+                <a href="profile.html" class="nav-btn btn-login">Profile</a>
+            </div>
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Saved Vehicles Page -->
+    <section class="vehicles-page-section">
+        <div class="section-container">
+            <!-- Back Button -->
+            <a href="profile.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                Back to Profile
+            </a>
+
+            <!-- Page Header -->
+            <div class="vehicles-header">
+                <div class="header-text">
+                    <h1 class="vehicles-title">Saved Vehicles</h1>
+                    <p class="vehicles-subtitle">Manage your vehicles for quick AI previews</p>
+                </div>
+                <button class="add-vehicle-btn" id="add-vehicle-btn">
+                    <i class="fas fa-plus"></i>
+                    Add New Vehicle
+                </button>
+            </div>
+
+            <!-- Vehicles Grid -->
+            <div class="vehicles-grid" id="vehicles-grid">
+                <!-- Dynamically populated -->
+            </div>
+
+            <!-- Empty State -->
+            <div class="empty-vehicles" id="empty-vehicles" style="display: none;">
+                <div class="empty-icon">
+                    <i class="fas fa-car-side"></i>
+                </div>
+                <h2>No vehicles saved yet</h2>
+                <p>Add your first vehicle to get personalized AI previews</p>
+                <button class="primary-btn" onclick="openVehicleModal()">
+                    <i class="fas fa-plus"></i>
+                    Add Your First Vehicle
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add/Edit Vehicle Modal -->
+    <div class="vehicle-modal" id="vehicle-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">Add New Vehicle</h3>
+                <button class="close-modal" id="close-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <form id="vehicle-form" class="vehicle-form">
+                <input type="hidden" id="edit-vehicle-id">
+
+                <div class="form-row">
+                    <div class="input-group">
+                        <label for="vehicle-make">Make</label>
+                        <input type="text" id="vehicle-make" placeholder="e.g., BMW, Tesla, Audi" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="vehicle-model">Model</label>
+                        <input type="text" id="vehicle-model" placeholder="e.g., M4, Model S" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="input-group">
+                        <label for="vehicle-year">Year</label>
+                        <input type="number" id="vehicle-year" placeholder="e.g., 2023" min="1900" max="2026" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="vehicle-variant">Variant</label>
+                        <input type="text" id="vehicle-variant" placeholder="e.g., Competition, Coupe">
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="vehicle-color">Color</label>
+                    <input type="text" id="vehicle-color" placeholder="e.g., Alpine White, Midnight Black">
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="set-default-vehicle">
+                    <label for="set-default-vehicle">Set as default vehicle</label>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="secondary-btn" id="cancel-form">Cancel</button>
+                    <button type="submit" class="primary-btn">Save Vehicle</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="confirm-modal" id="confirm-delete-modal">
+        <div class="confirm-content">
+            <div class="confirm-icon">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <h3>Delete Vehicle?</h3>
+            <p>Are you sure you want to remove this vehicle? This action cannot be undone.</p>
+            <div class="confirm-actions">
+                <button class="secondary-btn" id="cancel-delete">Cancel</button>
+                <button class="danger-btn" id="confirm-delete">Delete Vehicle</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-info">
+                    <a href="index.html" class="footer-logo">Mod<span>Vista</span></a>
+                    <p>Revolutionizing the automotive modification industry with AI-powered precision and premium
+                        performance parts.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#shop">Shop</a></li>
+                        <li><a href="ai-preview.html">AI Preview</a></li>
+                        <li><a href="offers.html">Offers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Shipping Policy</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h3>Join the Crew</h3>
+                    <p>Get exclusive early access to new mods and AI features.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Email Address">
+                        <button type="submit" class="primary-btn">Join</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 ModVista. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="cart-script.js"></script>
+    <script src="script.js"></script>
+    <script src="saved-vehicles.js"></script>
+</body>
+
+</html>

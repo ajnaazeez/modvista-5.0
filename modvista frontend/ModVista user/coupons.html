@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ModVista | Your Coupons</title>
+    <meta name="description" content="Apply the best coupons and save on premium car modifications at ModVista.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="coupons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Mod<span>Vista</span></a>
+
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="shop.html" class="nav-link">Shop</a></li>
+                <li><a href="ai-preview.html" class="nav-link">AI Preview</a></li>
+                <li><a href="offers.html" class="nav-link">Offers</a></li>
+                <li><a href="coupons.html" class="nav-link active">Coupons</a></li>
+                <li><a href="wishlist.html" class="nav-link">Wishlist</a></li>
+                <li><a href="cart.html" class="nav-link">Cart</a></li>
+                <li><a href="profile.html" class="nav-link">Profile</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <a href="wishlist.html" class="wishlist-icon-wrapper">
+                    <i class="fas fa-heart"></i>
+                    <span class="wishlist-count-badge" style="display: none;">0</span>
+                </a>
+                <a href="cart.html" class="cart-icon-wrapper">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count-badge" style="display: none;">0</span>
+                </a>
+                <a href="profile.html" class="cart-icon-wrapper">
+                    <i class="fas fa-user"></i>
+                </a>
+            </div>
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Coupons Page -->
+    <section class="coupons-page-section">
+        <div class="section-container">
+            <!-- Page Title -->
+            <div class="coupons-header">
+                <h1 class="coupons-title">Your Coupons</h1>
+                <p class="coupons-subtitle">Apply the best coupon to save on your order</p>
+                <div class="coupons-divider"></div>
+            </div>
+
+            <!-- Manual Coupon Entry -->
+            <div class="manual-coupon-entry">
+                <input type="text" id="manual-coupon-input" placeholder="Enter coupon code" maxlength="20">
+                <button class="apply-manual-btn" id="apply-manual-btn">Apply</button>
+            </div>
+            <div class="validation-message" id="validation-message"></div>
+
+            <!-- Tab Navigation -->
+            <div class="coupon-tabs">
+                <button class="tab-btn active" data-tab="available">Available Coupons</button>
+                <button class="tab-btn" data-tab="applied">Applied Coupon</button>
+                <button class="tab-btn" data-tab="expired">Expired Coupons</button>
+            </div>
+
+            <!-- Tab Content -->
+            <div class="tab-content">
+                <!-- Available Coupons -->
+                <div class="tab-pane active" id="available-tab">
+                    <div class="coupons-grid" id="available-coupons-grid">
+                        <!-- Dynamically populated -->
+                    </div>
+                </div>
+
+                <!-- Applied Coupon -->
+                <div class="tab-pane" id="applied-tab">
+                    <div class="empty-state">
+                        <i class="fas fa-ticket-alt"></i>
+                        <p>No coupon applied yet</p>
+                    </div>
+                </div>
+
+                <!-- Expired Coupons -->
+                <div class="tab-pane" id="expired-tab">
+                    <div class="coupons-grid" id="expired-coupons-grid">
+                        <!-- Dynamically populated -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-info">
+                    <a href="index.html" class="footer-logo">Mod<span>Vista</span></a>
+                    <p>Revolutionizing the automotive modification industry with AI-powered precision and premium
+                        performance parts.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#shop">Shop</a></li>
+                        <li><a href="offers.html">Offers</a></li>
+                        <li><a href="coupons.html">Coupons</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Shipping Policy</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h3>Join the Crew</h3>
+                    <p>Get exclusive early access to new mods and AI features.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Email Address">
+                        <button type="submit" class="primary-btn">Join</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 ModVista. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="cart-script.js"></script>
+    <script src="script.js"></script>
+    <script src="coupons.js"></script>
+</body>
+
+</html>

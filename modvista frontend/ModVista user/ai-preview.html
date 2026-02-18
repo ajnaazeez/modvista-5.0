@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ModVista | AI Preview - Try Before You Buy</title>
+    <meta name="description"
+        content="See how car modifications look on your vehicle with AI-powered preview technology.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="ai-preview.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Mod<span>Vista</span></a>
+
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="shop.html" class="nav-link">Shop</a></li>
+                <li><a href="ai-preview.html" class="nav-link active">AI Preview</a></li>
+                <li><a href="offers.html" class="nav-link">Offers</a></li>
+                <li><a href="coupons.html" class="nav-link">Coupons</a></li>
+                <li><a href="wishlist.html" class="nav-link">Wishlist</a></li>
+                <li><a href="cart.html" class="nav-link">Cart</a></li>
+                <li><a href="profile.html" class="nav-link">Profile</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <a href="wishlist.html" class="wishlist-icon-wrapper">
+                    <i class="fas fa-heart"></i>
+                    <span class="wishlist-count-badge" style="display: none;">0</span>
+                </a>
+                <a href="cart.html" class="cart-icon-wrapper">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count-badge" style="display: none;">0</span>
+                </a>
+                <a href="profile.html" class="cart-icon-wrapper">
+                    <i class="fas fa-user"></i>
+                </a>
+            </div>
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- AI Preview Section -->
+    <section class="ai-preview-section">
+        <div class="section-container">
+            <!-- Header -->
+            <div class="ai-preview-header">
+                <h1 class="ai-preview-title">AI Preview Your Car</h1>
+                <p class="ai-preview-subtitle">See how modifications look on your car before you buy</p>
+                <div class="ai-divider"></div>
+            </div>
+
+            <!-- AI Workspace -->
+            <div class="ai-workspace">
+                <!-- Left Panel - Upload & Controls -->
+                <div class="ai-control-panel">
+                    <!-- Upload Card -->
+                    <div class="upload-card" id="upload-card">
+                        <div class="upload-icon">
+                            <i class="fas fa-car"></i>
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <h3>Upload Your Car Photo</h3>
+                        <p class="upload-subtext">Front or side view recommended</p>
+                        <input type="file" id="car-image-input" accept="image/jpeg,image/png" hidden>
+                        <button class="upload-btn" id="upload-btn">
+                            <i class="fas fa-upload"></i>
+                            Upload Image
+                        </button>
+                        <p class="supported-formats">Supports: JPG, PNG</p>
+                    </div>
+
+                    <!-- Selected Modification -->
+                    <div class="selected-mod-card" id="selected-mod-card" style="display: none;">
+                        <div class="mod-header">
+                            <span class="ai-badge">AI Preview Enabled</span>
+                        </div>
+                        <h4>Selected Modification</h4>
+                        <p class="mod-name" id="selected-mod-name">LED Headlights</p>
+                        <p class="mod-price" id="selected-mod-price">₹1,899</p>
+                    </div>
+
+                    <!-- Choose Modification -->
+                    <div class="choose-mod-card">
+                        <h4>Choose Modification</h4>
+                        <div class="mod-options-scroll" id="mod-options-scroll">
+                            <!-- Dynamically populated -->
+                        </div>
+                        <button class="change-mod-btn" id="change-mod-btn">
+                            <i class="fas fa-sync-alt"></i>
+                            Choose Another Modification
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right Panel - Preview Output -->
+                <div class="ai-preview-panel">
+                    <!-- Preview Canvas -->
+                    <div class="preview-canvas" id="preview-canvas">
+                        <div class="preview-label">AI Preview</div>
+
+                        <!-- Empty State -->
+                        <div class="empty-preview" id="empty-preview">
+                            <div class="car-outline-icon">
+                                <i class="fas fa-car-side"></i>
+                            </div>
+                            <h3>Upload a photo to start AI preview</h3>
+                            <p>See your car with premium modifications</p>
+                        </div>
+
+                        <!-- AI Scanning Animation -->
+                        <div class="ai-scanning-overlay" id="ai-scanning-overlay" style="display: none;">
+                            <!-- Blurred Background Image -->
+                            <img src="" alt="" id="scanning-bg-image" class="scanning-bg-image">
+
+                            <!-- Dark Overlay -->
+                            <div class="scan-dark-overlay"></div>
+
+                            <!-- Grid Wireframe -->
+                            <div class="scan-grid-overlay">
+                                <div class="grid-lines"></div>
+                            </div>
+
+                            <!-- Horizontal Scan Line -->
+                            <div class="scan-line"></div>
+
+                            <!-- Analysis Markers -->
+                            <div class="analysis-markers">
+                                <div class="marker marker-1"><i class="fas fa-circle"></i></div>
+                                <div class="marker marker-2"><i class="fas fa-circle"></i></div>
+                                <div class="marker marker-3"><i class="fas fa-circle"></i></div>
+                            </div>
+
+                            <!-- Status Text -->
+                            <div class="scan-status-text" id="scan-status-text">
+                                Analyzing vehicle...
+                            </div>
+
+                            <!-- Progress Ring -->
+                            <div class="progress-ring">
+                                <svg width="60" height="60">
+                                    <circle cx="30" cy="30" r="26" class="progress-ring-circle"></circle>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <!-- Preview Image -->
+                        <img src="" alt="AI Preview" id="preview-image" style="display: none;">
+                    </div>
+
+                    <!-- Action Controls -->
+                    <div class="preview-actions">
+                        <button class="add-to-cart-btn" id="add-to-cart-btn" disabled>
+                            <i class="fas fa-shopping-cart"></i>
+                            Add to Cart
+                        </button>
+                        <button class="reset-preview-btn" id="reset-preview-btn">
+                            <i class="fas fa-redo"></i>
+                            Reset Preview
+                        </button>
+                    </div>
+
+                    <!-- Disclaimer -->
+                    <p class="preview-disclaimer">
+                        <i class="fas fa-info-circle"></i>
+                        Preview results may vary slightly from real-world installation
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-info">
+                    <a href="index.html" class="footer-logo">Mod<span>Vista</span></a>
+                    <p>Revolutionizing the automotive modification industry with AI-powered precision and premium
+                        performance parts.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#shop">Shop</a></li>
+                        <li><a href="ai-preview.html">AI Preview</a></li>
+                        <li><a href="offers.html">Offers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Shipping Policy</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h3>Join the Crew</h3>
+                    <p>Get exclusive early access to new mods and AI features.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Email Address">
+                        <button type="submit" class="primary-btn">Join</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 ModVista. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="cart-script.js"></script>
+    <script src="script.js"></script>
+    <script src="ai-preview.js"></script>
+</body>
+
+</html>

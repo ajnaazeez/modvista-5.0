@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automatic Offers | ModVista Admin</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-logo">
+            <h1>MODVISTA</h1>
+        </div>
+        <nav class="sidebar-menu">
+            <a href="index.html" class="menu-item">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="products.html" class="menu-item">
+                <i class="fas fa-box"></i>
+                <span>Products</span>
+            </a>
+            <a href="categories.html" class="menu-item">
+                <i class="fas fa-tags"></i>
+                <span>Categories</span>
+            </a>
+            <a href="orders.html" class="menu-item">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Orders</span>
+            </a>
+            <a href="offers.html" class="menu-item active">
+                <i class="fas fa-percent"></i>
+                <span>Offers</span>
+            </a>
+            <a href="coupons.html" class="menu-item">
+                <i class="fas fa-ticket-alt"></i>
+                <span>Coupons</span>
+            </a>
+            <a href="wallet.html" class="menu-item">
+                <i class="fas fa-wallet"></i>
+                <span>Wallet & Refunds</span>
+            </a>
+            <a href="users.html" class="menu-item">
+                <i class="fas fa-users"></i>
+                <span>Users</span>
+            </a>
+            <a href="analytics.html" class="menu-item">
+                <i class="fas fa-chart-line"></i>
+                <span>Analytics & Reports</span>
+            </a>
+            <a href="ai-monitoring.html" class="menu-item">
+                <i class="fas fa-robot"></i>
+                <span>AI Monitoring</span>
+            </a>
+            <a href="settings.html" class="menu-item">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+            </a>
+        </nav>
+        <div class="sidebar-footer">
+            <a href="#" class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="header">
+            <div class="header-left">
+                <div class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <div style="display: flex; flex-direction: column;">
+                    <h2 style="line-height: 1.2;">Automatic Offers</h2>
+                    <span style="font-size: 0.85rem; color: var(--text-dim);">Manage auto-applied deals and
+                        promotions</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <button class="action-btn" id="createNewBtn" style="padding: 10px 24px; font-size: 0.9rem;">
+                    <i class="fas fa-plus"></i> Create Offer
+                </button>
+            </div>
+        </header>
+
+        <div class="dashboard-body">
+            <div id="offers" class="tab-content active">
+                <div class="section-container">
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Offer Title</th>
+                                    <th>Type</th>
+                                    <th>Applicable To</th>
+                                    <th>Discount</th>
+                                    <th>Validity</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="offersTbody">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            &copy; 2026 ModVista Admin Panel
+        </footer>
+    </main>
+
+    <!-- Create/Edit Offer Modal -->
+    <div class="modal-overlay" id="offerModal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3 id="offerModalTitle">Create New Offer</h3>
+                <i class="fas fa-times close-modal" style="cursor: pointer; color: var(--text-dim);"></i>
+            </div>
+            <div class="modal-body">
+                <form id="offerForm">
+                    <div class="form-group">
+                        <label>Offer Title <span style="color: var(--accent);">*</span></label>
+                        <input type="text" class="form-control" name="title" required
+                            placeholder="e.g. Summer Bodykit Sale">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Discount Type</label>
+                            <select class="form-control" name="type">
+                                <option value="percentage">Percentage (%)</option>
+                                <option value="flat">Flat ($)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Value <span style="color: var(--accent);">*</span></label>
+                            <input type="number" class="form-control" name="value" required placeholder="0">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Banner Image URL <span style="font-size: 0.8rem; color: var(--text-dim);">(Optional, for
+                                featured offers)</span></label>
+                        <input type="text" class="form-control" name="bannerImage"
+                            placeholder="e.g. assets/new-year-banner.png">
+                    </div>
+                    <div class="form-group">
+                        <label>Applicable To</label>
+                        <select class="form-control" name="applicable">
+                            <option value="all">Entire Platform</option>
+                            <option value="exterior">Exterior Category</option>
+                            <option value="interior">Interior Category</option>
+                            <option value="performance">Performance Category</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Start Date</label>
+                            <input type="date" class="form-control" name="start_date">
+                        </div>
+                        <div class="form-group">
+                            <label>End Date</label>
+                            <input type="date" class="form-control" name="end_date">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label style="display: flex; align-items: center; justify-content: space-between;">
+                            Auto-Apply to Products
+                            <label class="switch">
+                                <input type="checkbox" name="auto_apply" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="action-btn" style="background: transparent; border-color: var(--border);"
+                    id="cancelOffer">Cancel</button>
+                <button class="action-btn" id="saveOfferBtn" type="submit" form="offerForm" disabled>Save Offer</button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Success Toast -->
+    <div class="toast" id="successToast">
+        <div style="display: flex; align-items: center; gap: 12px;">
+            <i class="fas fa-check-circle" style="color: var(--status-delivered);"></i>
+            <span id="toastMessage">Offer saved successfully!</span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="offers.js"></script>
+</body>
+
+</html>

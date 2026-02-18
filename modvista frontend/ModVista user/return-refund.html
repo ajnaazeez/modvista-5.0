@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Return / Refund | ModVista</title>
+    <meta name="description" content="Request a return or refund for your ModVista order.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" href="order-details.css">
+    <link rel="stylesheet" href="return-refund.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Mod<span>Vista</span></a>
+
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="shop.html" class="nav-link">Shop</a></li>
+                <li><a href="ai-preview.html" class="nav-link">AI Preview</a></li>
+                <li><a href="offers.html" class="nav-link">Offers</a></li>
+                <li><a href="coupons.html" class="nav-link">Coupons</a></li>
+                <li><a href="wishlist.html" class="nav-link">Wishlist</a></li>
+                <li><a href="cart.html" class="nav-link">Cart</a></li>
+                <li><a href="profile.html" class="nav-link active">Profile</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <a href="cart.html" class="cart-icon-wrapper">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count-badge" style="display: none;">0</span>
+                </a>
+            </div>
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="profile-container return-refund-main">
+        <div class="profile-grid">
+            <!-- Sidebar -->
+            <div id="sidebar-container"></div>
+
+            <div class="profile-content">
+                <div class="container">
+
+
+                    <header class="page-header">
+                        <h1>Return Request</h1>
+                        <p>We're here to help you with your return or refund request.</p>
+                        <div class="header-divider"></div>
+                    </header>
+
+                    <div class="return-grid">
+                        <!-- Left Column: Form Steps -->
+                        <div class="return-form-column">
+                            <!-- Step 1: Select Items -->
+                            <section class="card-box" id="step-items">
+                                <h2 class="section-title-minor">1. Select Items to Return</h2>
+                                <p class="section-desc">Select the items you wish to return and their quantity.</p>
+                                <div class="items-to-return-list" id="return-items-container">
+                                    <!-- Items will be injected by JS -->
+                                    <div class="loading-placeholder">Loading items...</div>
+                                </div>
+                            </section>
+
+                            <!-- Step 2: Reason & Proof -->
+                            <section class="card-box" id="step-reason">
+                                <h2 class="section-title-minor">2. Why are you returning?</h2>
+
+                                <div class="input-group">
+                                    <label for="return-reason">Reason for Return <span class="required">*</span></label>
+                                    <select id="return-reason" class="custom-select" required>
+                                        <option value="" disabled selected>Choose a reason</option>
+                                        <option value="damaged">Damaged product</option>
+                                        <option value="wrong-item">Wrong item received</option>
+                                        <option value="not-described">Not as described</option>
+                                        <option value="quality">Quality issue</option>
+                                        <option value="changed-mind">Changed my mind</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+
+                                <div class="input-group">
+                                    <label for="return-comments">Comments (Optional)</label>
+                                    <textarea id="return-comments"
+                                        placeholder="Please provide more details about the issue..."></textarea>
+                                </div>
+
+                                <div class="upload-section">
+                                    <label>Upload Proof (Images/Videos)</label>
+                                    <div class="upload-zone" id="upload-zone">
+                                        <input type="file" id="file-input" multiple accept="image/*,video/*" hidden>
+                                        <i class="fas fa-cloud-upload-alt"></i>
+                                        <p>Drag & drop or <span>browse</span></p>
+                                        <span class="file-hint">Max 3 files (IMG, PNG, MP4). Up to 10MB each.</span>
+                                    </div>
+                                    <div class="file-preview-grid" id="file-preview-grid"></div>
+                                </div>
+                            </section>
+
+                            <!-- Step 3: Refund Method & Pickup -->
+                            <section class="card-box" id="step-method">
+                                <h2 class="section-title-minor">3. Refund & Pickup</h2>
+
+                                <div class="refund-info-box">
+                                    <div class="info-row">
+                                        <span class="label">Refund Method:</span>
+                                        <span class="value" id="refund-method-text">Original Payment Method
+                                            (Razorpay)</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span class="label">Estimated Processing:</span>
+                                        <span class="value">5-7 Business Days after pickup</span>
+                                    </div>
+                                </div>
+
+                                <div class="pickup-address-box">
+                                    <h3 class="box-subtitle">Pickup Address</h3>
+                                    <div class="address-content">
+                                        <p class="name" id="pickup-name">Alex Rivera</p>
+                                        <p id="pickup-phone">+1 (555) 123-4567</p>
+                                        <p id="pickup-address">123 Performance Dr, Carbon Valley, CA 90210</p>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <div class="confirmation-actions">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" id="confirm-check">
+                                    <span class="checkmark"></span>
+                                    I confirm that the items are in their original condition/packaging.
+                                </label>
+
+                                <div class="action-btns">
+                                    <button class="primary-btn" id="submit-return" disabled>Submit Return
+                                        Request</button>
+                                    <a href="order-details.html" class="outline-btn">Cancel</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Column: Order Summary Side -->
+                        <div class="order-summary-column">
+                            <section class="card-box summary-card sticky-sidebar">
+                                <h2 class="section-title-minor">Order Summary</h2>
+                                <div class="compact-order-info">
+                                    <p><span>Order ID:</span> <strong id="summary-order-id">#MV2026849201</strong></p>
+                                    <p><span>Placed on:</span> <span id="summary-order-date">Jan 20, 2026</span></p>
+                                    <p><span>Total Value:</span> <strong id="summary-total-value">$2,948.82</strong></p>
+                                </div>
+                                <div class="return-estimation">
+                                    <div class="est-row">
+                                        <span>Return Subtotal</span>
+                                        <span id="return-subtotal">$0.00</span>
+                                    </div>
+                                    <div class="est-row">
+                                        <span>Estimated Refund</span>
+                                        <span id="est-refund" class="highlight">$0.00</span>
+                                    </div>
+                                    <p class="est-note">Final refund depends on item condition upon inspection.</p>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </main>
+
+    <!-- Success Modal -->
+    <div class="modal-overlay" id="success-modal">
+        <div class="modal-content">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2>Request Submitted!</h2>
+            <p>Your return request for Order <strong id="success-order-id">#MV2026849201</strong> has been successfully
+                placed.</p>
+            <div class="return-id-badge">
+                <span>Return Request ID:</span>
+                <strong id="return-req-id">RET-482015</strong>
+            </div>
+            <p class="next-steps">Our executive will reach out for the pickup within 24-48 hours.</p>
+            <button class="primary-btn" onclick="window.location.href='orders.html'">Go to My Orders</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-bottom">
+                <div class="footer-links">
+                    <a href="#">Support</a>
+                    <a href="#">Return Policy</a>
+                    <a href="#">Privacy Policy</a>
+                </div>
+                <p>© 2026 ModVista. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="cart-script.js"></script>
+    <script src="sidebar-loader.js"></script>
+    <script src="return-refund.js"></script>
+</body>
+
+</html>

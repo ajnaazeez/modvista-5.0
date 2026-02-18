@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wallet & Refunds | ModVista Admin</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-logo">
+            <h1>MODVISTA</h1>
+        </div>
+        <nav class="sidebar-menu">
+            <a href="index.html" class="menu-item">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="products.html" class="menu-item">
+                <i class="fas fa-box"></i>
+                <span>Products</span>
+            </a>
+            <a href="categories.html" class="menu-item">
+                <i class="fas fa-tags"></i>
+                <span>Categories</span>
+            </a>
+            <a href="orders.html" class="menu-item">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Orders</span>
+            </a>
+            <a href="offers.html" class="menu-item">
+                <i class="fas fa-percent"></i>
+                <span>Offers</span>
+            </a>
+            <a href="coupons.html" class="menu-item">
+                <i class="fas fa-ticket-alt"></i>
+                <span>Coupons</span>
+            </a>
+            <a href="wallet.html" class="menu-item active">
+                <i class="fas fa-wallet"></i>
+                <span>Wallet & Refunds</span>
+            </a>
+            <a href="users.html" class="menu-item">
+                <i class="fas fa-users"></i>
+                <span>Users</span>
+            </a>
+            <a href="analytics.html" class="menu-item">
+                <i class="fas fa-chart-line"></i>
+                <span>Analytics & Reports</span>
+            </a>
+            <a href="ai-monitoring.html" class="menu-item">
+                <i class="fas fa-robot"></i>
+                <span>AI Monitoring</span>
+            </a>
+            <a href="settings.html" class="menu-item">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+            </a>
+        </nav>
+        <div class="sidebar-footer">
+            <a href="#" class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="header">
+            <div class="header-left">
+                <div class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <div style="display: flex; flex-direction: column;">
+                    <h2 style="line-height: 1.2;">Wallet & Refund Management</h2>
+                    <span style="font-size: 0.85rem; color: var(--text-dim);">Monitor wallet balances and refund
+                        activity</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="search-box" style="width: 350px;">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="globalSearch" placeholder="Search User ID, Order ID, or Transaction ID...">
+                </div>
+            </div>
+        </header>
+
+        <div class="dashboard-body">
+            <!-- Summary Cards -->
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-title">Total Wallet Balance</div>
+                    <div class="metric-value">$1,245,670</div>
+                    <div style="margin-top: 8px; font-size: 0.8rem; color: var(--status-delivered);">
+                        <i class="fas fa-arrow-up"></i> 12% vs last month
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-title">Total Refunds Issued</div>
+                    <div class="metric-value">$42,890</div>
+                    <div style="margin-top: 8px; font-size: 0.8rem; color: var(--status-cancelled);">
+                        <i class="fas fa-arrow-up"></i> 5% increase
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-title">Pending Refunds</div>
+                    <div class="metric-value" style="color: var(--status-pending);">18</div>
+                    <div style="margin-top: 8px; font-size: 0.8rem; color: var(--text-dim);">
+                        Across 12 orders
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-title">Failed Refunds</div>
+                    <div class="metric-value" style="color: var(--accent);">3</div>
+                    <div style="margin-top: 8px; font-size: 0.8rem; color: var(--accent);">
+                        Requires manual retry
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filter Controls -->
+            <div class="section-container" style="padding: 20px; margin-bottom: 24px;">
+                <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+                    <select class="form-control" style="width: auto; height: 38px;">
+                        <option>All Types</option>
+                        <option>Credit</option>
+                        <option>Debit</option>
+                        <option>Refund</option>
+                    </select>
+                    <select class="form-control" style="width: auto; height: 38px;">
+                        <option>All Status</option>
+                        <option>Completed</option>
+                        <option>Pending</option>
+                        <option>Failed</option>
+                    </select>
+                    <select class="form-control" style="width: auto; height: 38px;">
+                        <option>All Methods</option>
+                        <option>Razorpay</option>
+                        <option>Wallet</option>
+                        <option>Card</option>
+                        <option>COD</option>
+                    </select>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <input type="date" class="form-control" style="width: auto; height: 38px;">
+                        <span style="color: var(--text-dim);">to</span>
+                        <input type="date" class="form-control" style="width: auto; height: 38px;">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Transactions Table -->
+            <div class="section-container">
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Transaction ID</th>
+                                <th>User</th>
+                                <th>Order ID</th>
+                                <th>Type</th>
+                                <th>Amount</th>
+                                <th>Method</th>
+                                <th>Status</th>
+                                <th>Date & Time</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="font-family: monospace;">TXN-99821</td>
+                                <td>
+                                    <div style="font-weight: 500;">John Doe</div>
+                                    <div style="font-size: 0.75rem; color: var(--text-dim);">#USR-1024</div>
+                                </td>
+                                <td><a href="#" style="color: var(--accent); text-decoration: none;">#MV-8842</a></td>
+                                <td><span style="color: var(--status-delivered); font-weight: 500;">Refund</span></td>
+                                <td style="font-weight: 600;">$450.00</td>
+                                <td>Razorpay</td>
+                                <td><span class="status-badge status-delivered">Completed</span></td>
+                                <td>
+                                    <div style="font-size: 0.85rem;">Jan 27, 2026</div>
+                                    <div style="font-size: 0.75rem; color: var(--text-dim);">14:30 PM</div>
+                                </td>
+                                <td>
+                                    <div style="display: flex; gap: 12px; align-items: center;">
+                                        <i class="fas fa-info-circle view-txn"
+                                            style="cursor: pointer; color: var(--text-dim);" title="View Details"></i>
+                                        <i class="fas fa-user-tag" style="cursor: pointer; color: var(--text-dim);"
+                                            title="View Wallet"></i>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-family: monospace;">TXN-99820</td>
+                                <td>
+                                    <div style="font-weight: 500;">Sarah Connor</div>
+                                    <div style="font-size: 0.75rem; color: var(--text-dim);">#USR-1025</div>
+                                </td>
+                                <td><a href="#" style="color: var(--accent); text-decoration: none;">#MV-8841</a></td>
+                                <td><span style="color: var(--status-pending); font-weight: 500;">Refund</span></td>
+                                <td style="font-weight: 600;">$1,200.00</td>
+                                <td>Wallet</td>
+                                <td><span class="status-badge status-pending">Pending</span></td>
+                                <td>
+                                    <div style="font-size: 0.85rem;">Jan 27, 2026</div>
+                                    <div style="font-size: 0.75rem; color: var(--text-dim);">12:15 PM</div>
+                                </td>
+                                <td>
+                                    <div style="display: flex; gap: 12px; align-items: center;">
+                                        <i class="fas fa-info-circle view-txn"
+                                            style="cursor: pointer; color: var(--text-dim);" title="View Details"></i>
+                                        <i class="fas fa-user-tag" style="cursor: pointer; color: var(--text-dim);"
+                                            title="View Wallet"></i>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-family: monospace;">TXN-99819</td>
+                                <td>
+                                    <div style="font-weight: 500;">Mike Ross</div>
+                                    <div style="font-size: 0.75rem; color: var(--text-dim);">#USR-1026</div>
+                                </td>
+                                <td><a href="#" style="color: var(--accent); text-decoration: none;">#MV-8840</a></td>
+                                <td><span style="color: var(--status-delivered); font-weight: 500;">Refund</span></td>
+                                <td style="font-weight: 600;">$89.99</td>
+                                <td>Card</td>
+                                <td><span class="status-badge status-blocked"
+                                        style="background: rgba(255, 31, 31, 0.1); color: var(--accent);">Failed</span>
+                                </td>
+                                <td>
+                                    <div style="font-size: 0.85rem;">Jan 26, 2026</div>
+                                    <div style="font-size: 0.75rem; color: var(--text-dim);">10:00 AM</div>
+                                </td>
+                                <td>
+                                    <div style="display: flex; gap: 12px; align-items: center;">
+                                        <i class="fas fa-redo-alt retry-refund"
+                                            style="cursor: pointer; color: var(--accent);" title="Retry Refund"></i>
+                                        <i class="fas fa-info-circle view-txn"
+                                            style="cursor: pointer; color: var(--text-dim);" title="View Details"></i>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-family: monospace;">TXN-99818</td>
+                                <td>
+                                    <div style="font-weight: 500;">Alex Johnson</div>
+                                    <div style="font-size: 0.75rem; color: var(--text-dim);">#USR-1027</div>
+                                </td>
+                                <td><a href="#" style="color: var(--accent); text-decoration: none;">#MV-8839</a></td>
+                                <td><span style="color: var(--text-dim); font-weight: 500;">Debit</span></td>
+                                <td style="font-weight: 600;">$240.00</td>
+                                <td>Wallet</td>
+                                <td><span class="status-badge status-delivered">Completed</span></td>
+                                <td>
+                                    <div style="font-size: 0.85rem;">Jan 26, 2026</div>
+                                    <div style="font-size: 0.75rem; color: var(--text-dim);">09:45 AM</div>
+                                </td>
+                                <td>
+                                    <div style="display: flex; gap: 12px; align-items: center;">
+                                        <i class="fas fa-info-circle view-txn"
+                                            style="cursor: pointer; color: var(--text-dim);" title="View Details"></i>
+                                        <i class="fas fa-user-tag" style="cursor: pointer; color: var(--text-dim);"
+                                            title="View Wallet"></i>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            &copy; 2026 ModVista Admin Panel
+        </footer>
+    </main>
+
+    <!-- Transaction Details Modal -->
+    <div class="modal-overlay" id="txnModal">
+        <div class="modal-container" style="max-width: 600px;">
+            <div class="modal-header">
+                <h3>Transaction Details <span id="txnIdTitle"
+                        style="color: var(--accent); font-size: 1rem; margin-left: 8px;"></span></h3>
+                <i class="fas fa-times" id="closeModal" style="cursor: pointer; color: var(--text-dim);"></i>
+            </div>
+            <div class="modal-body">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px;">
+                    <div>
+                        <p style="font-size: 0.8rem; color: var(--text-dim); margin-bottom: 4px;">TRANSACTION TYPE</p>
+                        <p style="font-weight: 600; font-size: 1.1rem;" id="txnType">Refund</p>
+                    </div>
+                    <div style="text-align: right;">
+                        <p style="font-size: 0.8rem; color: var(--text-dim); margin-bottom: 4px;">AMOUNT</p>
+                        <p style="font-weight: 700; font-size: 1.25rem; color: var(--accent);" id="txnAmount">$450.00
+                        </p>
+                    </div>
+                </div>
+
+                <div
+                    style="background: var(--bg-dark); padding: 16px; border-radius: 12px; border: 1px solid var(--border); margin-bottom: 24px;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+                        <span style="color: var(--text-dim);">Related Order:</span>
+                        <span style="font-weight: 500; color: var(--accent);" id="relOrder">#MV-8842</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+                        <span style="color: var(--text-dim);">Payment Method:</span>
+                        <span id="payMethod">Razorpay (Source)</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+                        <span style="color: var(--text-dim);">Wallet Impact:</span>
+                        <span id="walletImpact">+$0.00 (External)</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <span style="color: var(--text-dim);">Status:</span>
+                        <span class="status-badge status-delivered" id="txnStatus">Completed</span>
+                    </div>
+                </div>
+
+                <div id="refundExtras" style="display: block;">
+                    <div class="section-header" style="padding: 12px 0; border: none;">
+                        <h4 style="font-size: 0.9rem; color: var(--text-dim);">REFUND DETAILS</h4>
+                    </div>
+                    <div
+                        style="background: rgba(255, 31, 31, 0.05); padding: 12px; border-radius: 8px; border: 1px solid rgba(255, 31, 31, 0.1); margin-bottom: 24px;">
+                        <p style="font-size: 0.85rem;"><span style="color: var(--text-dim);">Reason:</span> Order
+                            Cancelled by User</p>
+                        <p style="font-size: 0.85rem; margin-top: 4px;"><span
+                                style="color: var(--text-dim);">Source:</span> Auto-generated by System</p>
+                    </div>
+
+                    <div class="section-header" style="padding: 12px 0; border: none;">
+                        <h4 style="font-size: 0.9rem; color: var(--text-dim);">REFUND TIMELINE</h4>
+                    </div>
+                    <div class="timeline" style="margin-top: 0;">
+                        <div class="timeline-item active">
+                            <div class="timeline-content">
+                                <h4>Refund Initiated</h4>
+                                <span>Jan 27, 2026 - 14:25 PM</span>
+                            </div>
+                        </div>
+                        <div class="timeline-item active">
+                            <div class="timeline-content">
+                                <h4>Processing Gateway</h4>
+                                <span>Jan 27, 2026 - 14:28 PM</span>
+                            </div>
+                        </div>
+                        <div class="timeline-item active" id="finalTimelineStep">
+                            <div class="timeline-content">
+                                <h4 id="timelineFinalStatus">Completed</h4>
+                                <span id="timelineFinalDate">Jan 27, 2026 - 14:30 PM</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="action-btn" id="modalRetryBtn"
+                    style="display: none; background: var(--accent); border-color: var(--accent);">Retry Refund</button>
+                <button class="action-btn" style="background: transparent; border-color: var(--border);"
+                    id="closeTxnBtn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Toast -->
+    <div class="toast" id="successToast">
+        <div style="display: flex; align-items: center; gap: 12px;">
+            <i class="fas fa-check-circle" style="color: var(--status-delivered);"></i>
+            <span id="toastMessage">Refund retried successfully!</span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="wallet.js"></script>
+</body>
+
+</html>

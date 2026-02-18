@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Model Monitoring | ModVista Admin</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-logo">
+            <h1>MODVISTA</h1>
+        </div>
+        <nav class="sidebar-menu">
+            <a href="index.html" class="menu-item">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="products.html" class="menu-item">
+                <i class="fas fa-box"></i>
+                <span>Products</span>
+            </a>
+            <a href="categories.html" class="menu-item">
+                <i class="fas fa-tags"></i>
+                <span>Categories</span>
+            </a>
+            <a href="orders.html" class="menu-item">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Orders</span>
+            </a>
+            <a href="offers.html" class="menu-item">
+                <i class="fas fa-percent"></i>
+                <span>Offers</span>
+            </a>
+            <a href="coupons.html" class="menu-item">
+                <i class="fas fa-ticket-alt"></i>
+                <span>Coupons</span>
+            </a>
+            <a href="wallet.html" class="menu-item">
+                <i class="fas fa-wallet"></i>
+                <span>Wallet & Refunds</span>
+            </a>
+            <a href="users.html" class="menu-item">
+                <i class="fas fa-users"></i>
+                <span>Users</span>
+            </a>
+            <a href="analytics.html" class="menu-item">
+                <i class="fas fa-chart-line"></i>
+                <span>Analytics & Reports</span>
+            </a>
+            <a href="ai-monitoring.html" class="menu-item active">
+                <i class="fas fa-robot"></i>
+                <span>AI Monitoring</span>
+            </a>
+            <a href="settings.html" class="menu-item">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+            </a>
+        </nav>
+        <div class="sidebar-footer">
+            <a href="#" class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="header">
+            <div class="header-left">
+                <div class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <div style="display: flex; flex-direction: column;">
+                    <h2 style="line-height: 1.2;">AI Model Monitoring</h2>
+                    <span style="font-size: 0.85rem; color: var(--text-dim);">Real-time insights into AI Preview
+                        performance</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="status-indicator"
+                    style="background: rgba(0, 184, 148, 0.1); color: var(--status-delivered);">
+                    <div class="status-active-pulse"></div>
+                    System Online
+                </div>
+            </div>
+        </header>
+
+        <div class="dashboard-body">
+            <!-- Key Metrics Cards -->
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-title">Total AI Previews</div>
+                    <div class="metric-value">42,891</div>
+                    <div style="font-size: 0.75rem; color: var(--status-delivered); margin-top: 4px;">
+                        <i class="fas fa-arrow-up"></i> 12% vs last week
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-title">Success Rate</div>
+                    <div class="metric-value">98.4%</div>
+                    <div class="accuracy-gauge">
+                        <div class="accuracy-fill" style="width: 98.4%;"></div>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-title">Failed Previews</div>
+                    <div class="metric-value" style="color: var(--accent);">682</div>
+                    <div style="font-size: 0.75rem; color: var(--text-dim); margin-top: 4px;">
+                        Technical errors: 142
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-title">Avg. Processing</div>
+                    <div class="metric-value">1.8s</div>
+                    <div style="font-size: 0.75rem; color: var(--text-dim); margin-top: 4px;">
+                        Target: < 2.5s </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-title">Active AI Sessions</div>
+                        <div class="metric-value">24</div>
+                        <div style="font-size: 0.75rem; color: var(--status-delivered); margin-top: 4px;">
+                            Real-time load: Low
+                        </div>
+                    </div>
+                </div>
+
+                <div class="charts-grid">
+                    <!-- AI Requests Chart -->
+                    <div class="section-container">
+                        <div class="section-header">
+                            <div class="section-title">AI Preview Requests (24h)</div>
+                            <div style="display: flex; gap: 8px;">
+                                <button class="action-btn"
+                                    style="padding: 4px 12px; font-size: 0.75rem; background: transparent; border-color: var(--border);">Download
+                                    JSON</button>
+                            </div>
+                        </div>
+                        <div class="chart-placeholder">
+                            <p>Line Chart: Requests Volume</p>
+                            <div class="usage-heatmap" style="margin-top: 20px;">
+                                <!-- Mock Heatmap -->
+                                <div class="heat-bar heat-low" style="height: 20%;"></div>
+                                <div class="heat-bar heat-mid" style="height: 40%;"></div>
+                                <div class="heat-bar heat-high" style="height: 80%;"></div>
+                                <div class="heat-bar heat-high" style="height: 90%;"></div>
+                                <div class="heat-bar heat-mid" style="height: 50%;"></div>
+                                <div class="heat-bar heat-low" style="height: 30%;"></div>
+                                <div class="heat-bar heat-high" style="height: 70%;"></div>
+                                <div class="heat-bar heat-mid" style="height: 45%;"></div>
+                                <div class="heat-bar heat-low" style="height: 25%;"></div>
+                                <div class="heat-bar heat-high" style="height: 100%;"></div>
+                                <div class="heat-bar heat-mid" style="height: 60%;"></div>
+                            </div>
+                            <div
+                                style="display: flex; justify-content: space-between; font-size: 0.7rem; color: var(--text-dim); margin-top: 4px;">
+                                <span>00:00</span><span>06:00</span><span>12:00</span><span>18:00</span><span>23:59</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Model Status -->
+                    <div class="section-container">
+                        <div class="section-header">
+                            <div class="section-title">Model Infrastructure</div>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 16px;">
+                            <div class="model-status-card">
+                                <div
+                                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                                    <span style="font-weight: 700;">VisionGen-V4</span>
+                                    <span class="status-pill pill-active">Active</span>
+                                </div>
+                                <div style="font-size: 0.85rem; color: var(--text-dim);">
+                                    Version: 4.2.1-stable<br>
+                                    Last Deploy: Jan 20, 2026<br>
+                                    Region: us-east-1 (AI Cluster)
+                                </div>
+                                <div style="margin-top: 16px;">
+                                    <div
+                                        style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 4px;">
+                                        <span>Accuracy Score</span>
+                                        <span style="color: var(--status-delivered);">94.2%</span>
+                                    </div>
+                                    <div class="accuracy-gauge">
+                                        <div class="accuracy-fill" style="width: 94.2%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div
+                                style="padding: 16px; border: 1px solid var(--border); border-radius: 12px; display: flex; align-items: center; justify-content: space-between;">
+                                <div>
+                                    <div style="font-weight: 600;">AI Preview Feature</div>
+                                    <div style="font-size: 0.8rem; color: var(--text-dim);">Global platform switch</div>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" checked id="globalAiToggle">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Error Logs -->
+                <div class="section-container" style="margin-top: 32px;">
+                    <div class="section-header">
+                        <div class="section-title">System Error Logs (Recent)</div>
+                        <button class="action-btn" id="clearLogsBtn">Clear Display Logs</button>
+                    </div>
+                    <div class="table-wrapper log-table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Timestamp</th>
+                                    <th>User ID</th>
+                                    <th>Vehicle Type</th>
+                                    <th>Error Reason</th>
+                                    <th>Severity</th>
+                                </tr>
+                            </thead>
+                            <tbody id="errorLogBody">
+                                <tr>
+                                    <td>2026-01-27 15:42:01</td>
+                                    <td>#USR-8812</td>
+                                    <td>SUV (Black)</td>
+                                    <td class="log-error">Low quality input image</td>
+                                    <td><span class="status-badge status-pending">Warning</span></td>
+                                </tr>
+                                <tr>
+                                    <td>2026-01-27 15:38:45</td>
+                                    <td>#USR-9921</td>
+                                    <td>Sedan (Red)</td>
+                                    <td class="log-error">Model timeout (5.2s)</td>
+                                    <td><span class="status-badge status-cancelled">Critical</span></td>
+                                </tr>
+                                <tr>
+                                    <td>2026-01-27 15:12:30</td>
+                                    <td>#USR-7723</td>
+                                    <td>Truck (White)</td>
+                                    <td class="log-error">Unsupported image format</td>
+                                    <td><span class="status-badge status-pending">Warning</span></td>
+                                </tr>
+                                <tr>
+                                    <td>2026-01-27 14:55:12</td>
+                                    <td>#USR-4410</td>
+                                    <td>Coupe (Blue)</td>
+                                    <td class="log-error">GPU Memory Limit Exceeded</td>
+                                    <td><span class="status-badge status-cancelled">Critical</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <footer>
+                &copy; 2026 ModVista Admin Panel
+            </footer>
+    </main>
+
+    <script src="script.js"></script>
+    <script src="ai-monitoring.js"></script>
+</body>
+
+</html>
